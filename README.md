@@ -16,7 +16,7 @@ Steps:
   /ROLAND
      /SP-404MKII
        /PROJECT_PROJECT_01
-          /PTN  **<- move the script here**
+          /PTN  <- move the script here
 ````
 
 
