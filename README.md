@@ -15,7 +15,7 @@ Steps:
 
 1 - Go and download Python https://www.python.org/downloads/release/python-3111/ , Im using Python 3.11.1.
 
-2 - run on a cmd/terminal inside the pattern folder the next line:
+2 - run on a cmd/terminal inside the script folder the next line:
 
 ````py pattern_chain_concatenator_gui_version.py````
 
