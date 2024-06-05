@@ -23,7 +23,7 @@ def concatenate_patterns(pattern_numbers):
     bars_sum = 0
     for i, ptn_number in enumerate(pattern_numbers):
         bin_filename = f'PTN{ptn_number+1:05d}.BIN'
-        print(f"Concatenating pattern {ptn_number+1}/{len(pattern_numbers)}: {bin_filename}")  # Aviso del patrón actual
+        print(f"Concatenating pattern {ptn_number+1}/{len(pattern_numbers)}: {bin_filename}")
         bin_data = read_bin_file(bin_filename)
 
         if i < len(pattern_numbers) - 1:
