@@ -1,8 +1,33 @@
 # sp404mk2-utility
 Repository for utility scripts for the Roland SP404MK2 sampler.
 
+# Pattern Concatenator GUI VERSION
 
-# Pattern Concatenator
+pattern_chain_concatenator_gui_version.py reads a pattern chain file (.CHN) and concatenates the corresponding pattern binary data from .BIN files.
+
+Consider this:  The script ensures that the total number of bars in the concatenated pattern does not exceed a specified maximum limit of 64 bars (default by Roland).
+
+** Currently just working for BANK A **
+
+![image](https://github.com/JLopezZn/sp404mk2-utility/assets/42882196/f0f5f412-6b95-421c-94c7-6cd10fca2877)
+
+Steps:
+
+1 - Go and download Python https://www.python.org/downloads/release/python-3111/ , Im using Python 3.11.1.
+
+2 - run on a cmd/terminal inside the pattern folder the next line:
+
+````py pattern_chain_concatenator_gui_version.py````
+
+
+3 - Import the modified project to your SP404MK2 and enjoy :)
+
+
+
+# Pattern Concatenator NO GUI VERSION
+
+** Currently just working for BANK A **
+
 pattern_chain_concatenator.py reads a pattern chain file (.CHN) and concatenates the corresponding pattern binary data from .BIN files.
 
 Consider this:  The script ensures that the total number of bars in the concatenated pattern does not exceed a specified maximum limit of 64 bars (default by Roland).
