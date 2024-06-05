@@ -19,8 +19,7 @@ Steps:
           /PTN  <- move the script here
 ````
 
-
-2 - Open the pattern_chain_concatenator.py file and make sure to change the variables **chn_filename** and **new_bin_filename** values of the main() fuction:
+3 - Open the pattern_chain_concatenator.py file and make sure to change the variables **chn_filename** and **new_bin_filename** values of the main() fuction:
 ````
 def main():
     chn_filename = 'PATTERNCHAIN_00.CHN' #CHANGE THIS FOR YOUR PATTERN CHAIN FILE
@@ -36,8 +35,6 @@ if __name__ == "__main__":
     main()
 
 ````
-
-3 - run on a cmd/terminal inside the pattern folder the next line:
+4 - run on a cmd/terminal inside the pattern folder the next line:
 ````py pattern_chain_concatenator.py````
-
-4 - Import the modified project to your SP404MK2 and enjoy :)
+5 - Import the modified project to your SP404MK2 and enjoy :)
