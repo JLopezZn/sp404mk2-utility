@@ -1,5 +1,7 @@
 import struct
 import xml.etree.ElementTree as ET
+import tkinter as tk
+from tkinter import ttk, filedialog, messagebox
 
 MAX_BARS = 64
 
@@ -43,15 +45,53 @@ def concatenate_patterns(pattern_numbers):
 
     return concatenated_data
 
-def main():
-    chn_filename = 'PATTERNCHAIN_00.CHN'
-    new_bin_filename = "PTN00017.BIN"
-    
-    pattern_numbers = read_chn_file(chn_filename)
-    concatenated_data = concatenate_patterns(pattern_numbers)
-    if concatenated_data is not None:
-        write_bin_file(new_bin_filename, concatenated_data)
-        print(f'New .BIN file "{new_bin_filename}" has been created.')
+def process_files(chn_filename, new_bin_filename):
+    try:
+        pattern_numbers = read_chn_file(chn_filename)
+        concatenated_data = concatenate_patterns(pattern_numbers)
+        if concatenated_data is not None:
+            write_bin_file(new_bin_filename, concatenated_data)
+            messagebox.showinfo("Success", f'New .BIN file "{new_bin_filename}" has been created.')
+    except Exception as e:
+        messagebox.showerror("Error", f"An error occurred: {e}")
 
-if __name__ == "__main__":
-    main()
+def select_chn_file():
+    filename = filedialog.askopenfilename(title="Select .CHN file", filetypes=[("CHN files", "*.CHN")])
+    chn_file_entry.delete(0, tk.END)
+    chn_file_entry.insert(0, filename)
+
+def run_processing():
+    chn_filename = chn_file_entry.get()
+    selected_pad = pad_var.get()
+    if selected_pad:
+        new_bin_filename = f'PTN{selected_pad:05d}.BIN'
+        if chn_filename and new_bin_filename:
+            process_files(chn_filename, new_bin_filename)
+        else:
+            messagebox.showwarning("Input Error", "Please select a .CHN file and specify an output filename.")
+    else:
+        messagebox.showwarning("Input Error", "Please select a pad number.")
+
+# Opciones para los pads del Banco A
+pad_options = [i + 1 for i in range(16)]  # 1 to 16
+
+# Setup GUI
+root = tk.Tk()
+root.title("Pattern Concatenation Tool")
+
+# File selection
+tk.Label(root, text="Select .CHN File:").grid(row=0, column=0, padx=10, pady=10)
+chn_file_entry = tk.Entry(root, width=50)
+chn_file_entry.grid(row=0, column=1, padx=10, pady=10)
+tk.Button(root, text="Browse", command=select_chn_file).grid(row=0, column=2, padx=10, pady=10)
+
+# Pad selection
+tk.Label(root, text="Select Pattern Pad (Bank A):").grid(row=1, column=0, padx=10, pady=10)
+pad_var = tk.IntVar()
+pad_menu = ttk.Combobox(root, textvariable=pad_var, values=pad_options, width=47)
+pad_menu.grid(row=1, column=1, padx=10, pady=10)
+
+# Process button
+tk.Button(root, text="Process", command=run_processing).grid(row=2, column=0, columnspan=3, pady=20)
+
+root.mainloop()
