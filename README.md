@@ -36,6 +36,8 @@ if __name__ == "__main__":
 
 ````
 4 - run on a cmd/terminal inside the pattern folder the next line:
+
 ````py pattern_chain_concatenator.py````
+
 
 5 - Import the modified project to your SP404MK2 and enjoy :)
